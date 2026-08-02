@@ -184,3 +184,65 @@ button:hover{
     box-shadow:0 8px 20px rgba(0,0,0,0.3);
     margin-bottom:20px;
 }
+/* ===== Profile Photo ===== */
+
+.profile-photo{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    margin-bottom:20px;
+}
+
+/* ===== Subtitle ===== */
+
+.subtitle{
+    color:#003366;
+    font-size:32px;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+
+/* ===== Qualification Box ===== */
+
+.profile-info{
+    width:70%;
+    margin:20px auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.15);
+    font-size:20px;
+    line-height:1.8;
+    color:#333;
+    text-align:left;
+}
+
+.profile-info p{
+    margin:10px 0;
+}
+
+/* ===== Tagline ===== */
+
+.tagline{
+    font-size:22px;
+    color:#555;
+    margin:25px 0;
+    font-style:italic;
+}
+
+/* ===== Hero Section ===== */
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(135deg,#eaf4ff,#ffffff);
+}
+
+.hero h1{
+    color:#003366;
+    font-size:48px;
+    margin-bottom:10px;
+}
