@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LPP Interactive Suite - Ravi Shankar | DAV Sector 4</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .code-font { font-family: 'Fira Code', monospace; }
+        canvas { touch-action: none; }
+        
+        @media print {
+            .no-print { display: none !important; }
+            .print-break { page-break-before: always; }
+            body { background: white !important; color: black !important; }
+            .shadow-card { box-shadow: none !important; border: 1px solid #e2e8f0 !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-200">
+
+    <!-- NAVIGATION / HEADER -->
+    <header class="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-600 text-white p-2.5 rounded-xl shadow-md shadow-blue-500/20">
+                    <i class="fa-solid fa-chart-line text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+                        DAV SECTOR 4
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 font-semibold border border-blue-200 dark:border-blue-700">LPP Suite</span>
+                    </h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Mathematics Department • Class XII & JEE Advanced</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <!-- Faculty Tag -->
+                <div class="hidden sm:flex items-center px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-700 text-white shadow-sm border border-slate-700">
+                    <i class="fa-solid fa-user-gradient text-blue-400 mr-2 text-sm"></i>
+                    <span class="text-xs font-medium text-slate-300 mr-1">Faculty:</span>
+                    <span class="text-sm font-bold text-white tracking-wide">Ravi Shankar</span>
+                </div>
+
+                <!-- Dark Mode Toggle -->
+                <button id="themeToggle" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
+                </button>
+
+                <!-- Print Button -->
+                <button onclick="window.print()" class="px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Print PDF</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- PRINT HEADER (Only visible during print) -->
+    <div class="hidden print:block p-6 border-b-2 border-slate-900 mb-6">
+        <div class="flex justify-between items-end">
+            <div>
+                <h1 class="text-3xl font-black text-slate-900">DAV SECTOR 4</h1>
+                <p class="text-slate-600 text-sm">Linear Programming Problems (LPP) — Interactive & Solution Suite</p>
+            </div>
+            <div class="text-right">
+                <p class="text-lg font-bold text-slate-900">Faculty: Ravi Shankar</p>
+                <p class="text-xs text-slate-500">Mathematics Department</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- INTRO HERO CARD -->
+        <div class="bg-gradient-to-br from-blue-900 via-slate-900 to-indigo-950 text-white rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden border border-blue-800/50 no-print">
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-shapes text-[260px]"></i>
+            </div>
+            <div class="relative z-10 max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-medium border border-blue-400/30 mb-4">
+                    <i class="fa-solid fa-compass-drafting"></i> Interactive Real-Time Canvas Graphing
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-3">Linear Programming Practice & Solved Graphs</h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                    Designed for students of DAV Sector 4 under the guidance of <strong>Faculty: Ravi Shankar</strong>. Explore NCERT fundamentals and high-level JEE Advanced problem solving with <strong>real-time graph rendering, movable objective lines, dynamic corner point updates, and full solution steps</strong>.
+                </p>
+                <div class="flex flex-wrap gap-4 text-xs font-semibold text-slate-300">
+                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-green-400"></i> 5 NCERT Core Questions</div>
+                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-400"></i> 1 JEE Advanced Mastery Question</div>
+                    <div class="flex items-center gap-1.5"><i class="fa-solid fa-sliders text-blue-400"></i> Dynamic Z-Line Sliders</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 1: NCERT EASY QUESTIONS -->
+        <section class="space-y-8">
+            <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+                        Section 1: NCERT Standard Questions (Q1 to Q5)
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Step-by-step mathematical derivation accompanied by real-time interactive plots.</p>
+                </div>
+                <span class="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/50 px-3 py-1 rounded-lg border border-blue-200 dark:border-blue-900">5 Problems</span>
+            </div>
+
+            <!-- QUESTION 1 CONTAINER -->
+            <div id="q1-card" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden">
+                <div class="p-5 bg-slate-100/70 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-blue-600 text-white rounded-md text-xs">Q1</span>
+                        NCERT Standard Maximization
+                    </h3>
+                    <span class="text-xs font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-full">Ex 12.1 Type</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+                    <!-- Text & Solution -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Problem Statement</h4>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Maximize <span class="text-blue-600 dark:text-blue-400 font-mono">Z = 3x + 4y</span> subject to constraints:
+                            </p>
+                            <ul class="text-xs font-mono text-slate-600 dark:text-slate-300 mt-2 space-y-1 pl-4 list-disc">
+                                <li>x + y ≤ 4</li>
+                                <li>x ≥ 0, y ≥ 0</li>
+                            </ul>
+                        </div>
+
+                        <!-- Solution Steps -->
+                        <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-square-check text-emerald-500"></i> Mathematical Solution Steps
+                            </h4>
+                            <p><strong>Step 1:</strong> Convert inequality <span class="font-mono">x + y ≤ 4</span> to equation line <span class="font-mono">x + y = 4</span>. Intercepts are <span class="font-mono">(4, 0)</span> and <span class="font-mono">(0, 4)</span>.</p>
+                            <p><strong>Step 2:</strong> Test origin <span class="font-mono">(0,0)</span>: <span class="font-mono">0 + 0 ≤ 4</span> (True). The feasible region is bounded in the first quadrant.</p>
+                            <p><strong>Step 3:</strong> Evaluate $Z = 3x + 4y$ at corner points:</p>
+                            
+                            <!-- Corner Point Table -->
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                    <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                                        <tr>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Corner Point</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Z = 3x + 4y Calculation</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                        <tr><td class="p-2 font-mono">O (0, 0)</td><td class="p-2 font-mono">3(0) + 4(0)</td><td class="p-2 font-semibold">0</td></tr>
+                                        <tr><td class="p-2 font-mono">A (4, 0)</td><td class="p-2 font-mono">3(4) + 4(0)</td><td class="p-2 font-semibold">12</td></tr>
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold">
+                                            <td class="p-2 font-mono">B (0, 4)</td>
+                                            <td class="p-2 font-mono">3(0) + 4(4)</td>
+                                            <td class="p-2 font-bold text-emerald-600 dark:text-emerald-400">16 (MAX)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg font-medium text-blue-900 dark:text-blue-200">
+                                <i class="fa-solid fa-circle-info mr-1"></i> <strong>Conclusion:</strong> Maximum value of Z is <strong>16</strong> occurring at point <strong>(0, 4)</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Canvas & Controls -->
+                    <div class="lg:col-span-6 flex flex-col items-center justify-between bg-slate-900 rounded-xl p-4 border border-slate-800 text-white">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-chart-area mr-1"></i> Interactive Real Plot</span>
+                            <span id="q1-zval-badge" class="text-xs font-mono bg-blue-500/20 text-blue-300 border border-blue-400/30 px-2 py-0.5 rounded">Current Z = 16</span>
+                        </div>
+
+                        <!-- Canvas -->
+                        <div class="relative w-full aspect-square max-w-[340px]">
+                            <canvas id="q1-canvas" class="w-full h-full bg-slate-950 rounded-lg border border-slate-800"></canvas>
+                        </div>
+
+                        <!-- Movable Slider Control -->
+                        <div class="w-full mt-4 space-y-2 no-print">
+                            <div class="flex justify-between items-center text-xs">
+                                <label for="q1-z-slider" class="text-slate-300 font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-sliders text-blue-400"></i> Drag Objective Line Z:
+                                </label>
+                                <span id="q1-slider-val" class="font-mono text-blue-400 font-bold">16.0</span>
+                            </div>
+                            <input type="range" id="q1-z-slider" min="0" max="25" step="0.5" value="16" class="w-full accent-blue-500 bg-slate-700 h-1.5 rounded-lg cursor-pointer">
+                            <p class="text-[10px] text-slate-400 text-center">Move slider to see the Objective Line Z = 3x + 4y sweep through the feasible region.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 2 CONTAINER -->
+            <div id="q2-card" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden">
+                <div class="p-5 bg-slate-100/70 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-blue-600 text-white rounded-md text-xs">Q2</span>
+                        NCERT Standard Minimization
+                    </h3>
+                    <span class="text-xs font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-full">Ex 12.1 Core</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Problem Statement</h4>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Minimize <span class="text-blue-600 dark:text-blue-400 font-mono">Z = -3x + 4y</span> subject to constraints:
+                            </p>
+                            <ul class="text-xs font-mono text-slate-600 dark:text-slate-300 mt-2 space-y-1 pl-4 list-disc">
+                                <li>x + 2y ≤ 8</li>
+                                <li>3x + 2y ≤ 12</li>
+                                <li>x ≥ 0, y ≥ 0</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-square-check text-emerald-500"></i> Mathematical Solution Steps
+                            </h4>
+                            <p><strong>Step 1:</strong> Plot boundary lines: $L_1: x + 2y = 8 \implies (8,0), (0,4)$ and $L_2: 3x + 2y = 12 \implies (4,0), (0,6)$.</p>
+                            <p><strong>Step 2:</strong> Solve simultaneous equations for point of intersection $B$:<br>
+                            $(3x + 2y) - (x + 2y) = 12 - 8 \implies 2x = 4 \implies x = 2, y = 3 \implies B(2, 3)$.</p>
+                            <p><strong>Step 3:</strong> Corner Point Evaluation for $Z = -3x + 4y$:</p>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                    <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                                        <tr>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Corner Point</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Z = -3x + 4y</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                        <tr><td class="p-2 font-mono">O (0, 0)</td><td class="p-2 font-mono">-3(0) + 4(0)</td><td class="p-2 font-semibold">0</td></tr>
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold">
+                                            <td class="p-2 font-mono">A (4, 0)</td>
+                                            <td class="p-2 font-mono">-3(4) + 4(0)</td>
+                                            <td class="p-2 font-bold text-emerald-600 dark:text-emerald-400">-12 (MIN)</td>
+                                        </tr>
+                                        <tr><td class="p-2 font-mono">B (2, 3)</td><td class="p-2 font-mono">-3(2) + 4(3)</td><td class="p-2 font-semibold">6</td></tr>
+                                        <tr><td class="p-2 font-mono">C (0, 4)</td><td class="p-2 font-mono">-3(0) + 4(4)</td><td class="p-2 font-semibold">16</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg font-medium text-blue-900 dark:text-blue-200">
+                                <i class="fa-solid fa-circle-info mr-1"></i> <strong>Conclusion:</strong> Minimum value of Z is <strong>-12</strong> occurring at point <strong>(4, 0)</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 flex flex-col items-center justify-between bg-slate-900 rounded-xl p-4 border border-slate-800 text-white">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-chart-area mr-1"></i> Interactive Real Plot</span>
+                            <span id="q2-zval-badge" class="text-xs font-mono bg-blue-500/20 text-blue-300 border border-blue-400/30 px-2 py-0.5 rounded">Current Z = -12</span>
+                        </div>
+                        <div class="relative w-full aspect-square max-w-[340px]">
+                            <canvas id="q2-canvas" class="w-full h-full bg-slate-950 rounded-lg border border-slate-800"></canvas>
+                        </div>
+                        <div class="w-full mt-4 space-y-2 no-print">
+                            <div class="flex justify-between items-center text-xs">
+                                <label for="q2-z-slider" class="text-slate-300 font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-sliders text-blue-400"></i> Drag Objective Line Z:
+                                </label>
+                                <span id="q2-slider-val" class="font-mono text-blue-400 font-bold">-12.0</span>
+                            </div>
+                            <input type="range" id="q2-z-slider" min="-20" max="20" step="0.5" value="-12" class="w-full accent-blue-500 bg-slate-700 h-1.5 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 3 CONTAINER -->
+            <div id="q3-card" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden">
+                <div class="p-5 bg-slate-100/70 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-blue-600 text-white rounded-md text-xs">Q3</span>
+                        NCERT Intersecting Maximization
+                    </h3>
+                    <span class="text-xs font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-full">NCERT Pattern</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Problem Statement</h4>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Maximize <span class="text-blue-600 dark:text-blue-400 font-mono">Z = 5x + 3y</span> subject to constraints:
+                            </p>
+                            <ul class="text-xs font-mono text-slate-600 dark:text-slate-300 mt-2 space-y-1 pl-4 list-disc">
+                                <li>3x + 5y ≤ 15</li>
+                                <li>5x + 2y ≤ 10</li>
+                                <li>x ≥ 0, y ≥ 0</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-square-check text-emerald-500"></i> Mathematical Solution Steps
+                            </h4>
+                            <p><strong>Step 1:</strong> Intercepts for $3x + 5y = 15 \implies (5,0), (0,3)$ and $5x + 2y = 10 \implies (2,0), (0,5)$.</p>
+                            <p><strong>Step 2:</strong> Calculate Intersection Point $B$ by matrix/algebraic elimination:<br>
+                            Multiplying line 1 by 2: $6x + 10y = 30$; Line 2 by 5: $25x + 10y = 50$.<br>
+                            Subtracting: $19x = 20 \implies x = 20/19 \approx 1.05$. Substituting gives $y = 45/19 \approx 2.37$.</p>
+                            <p><strong>Step 3:</strong> Corner Point Table:</p>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                    <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                                        <tr>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Corner Point</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Z = 5x + 3y</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                        <tr><td class="p-2 font-mono">O (0, 0)</td><td class="p-2 font-mono">5(0) + 3(0)</td><td class="p-2 font-semibold">0</td></tr>
+                                        <tr><td class="p-2 font-mono">A (2, 0)</td><td class="p-2 font-mono">5(2) + 3(0)</td><td class="p-2 font-semibold">10</td></tr>
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold">
+                                            <td class="p-2 font-mono">B (20/19, 45/19)</td>
+                                            <td class="p-2 font-mono">5(20/19) + 3(45/19) = 235/19</td>
+                                            <td class="p-2 font-bold text-emerald-600 dark:text-emerald-400">12.37 (MAX)</td>
+                                        </tr>
+                                        <tr><td class="p-2 font-mono">C (0, 3)</td><td class="p-2 font-mono">5(0) + 3(3)</td><td class="p-2 font-semibold">9</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg font-medium text-blue-900 dark:text-blue-200">
+                                <i class="fa-solid fa-circle-info mr-1"></i> <strong>Conclusion:</strong> Max Z is <strong>235/19 (≈12.37)</strong> occurring at <strong>(20/19, 45/19)</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 flex flex-col items-center justify-between bg-slate-900 rounded-xl p-4 border border-slate-800 text-white">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-chart-area mr-1"></i> Interactive Real Plot</span>
+                            <span id="q3-zval-badge" class="text-xs font-mono bg-blue-500/20 text-blue-300 border border-blue-400/30 px-2 py-0.5 rounded">Current Z = 12.37</span>
+                        </div>
+                        <div class="relative w-full aspect-square max-w-[340px]">
+                            <canvas id="q3-canvas" class="w-full h-full bg-slate-950 rounded-lg border border-slate-800"></canvas>
+                        </div>
+                        <div class="w-full mt-4 space-y-2 no-print">
+                            <div class="flex justify-between items-center text-xs">
+                                <label for="q3-z-slider" class="text-slate-300 font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-sliders text-blue-400"></i> Drag Objective Line Z:
+                                </label>
+                                <span id="q3-slider-val" class="font-mono text-blue-400 font-bold">12.37</span>
+                            </div>
+                            <input type="range" id="q3-z-slider" min="0" max="25" step="0.5" value="12.37" class="w-full accent-blue-500 bg-slate-700 h-1.5 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 4 CONTAINER -->
+            <div id="q4-card" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden">
+                <div class="p-5 bg-slate-100/70 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-blue-600 text-white rounded-md text-xs">Q4</span>
+                        Multi-Constraint Min & Max Problem
+                    </h3>
+                    <span class="text-xs font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-full">Ex 12.1 Advanced</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Problem Statement</h4>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Minimize & Maximize <span class="text-blue-600 dark:text-blue-400 font-mono">Z = x + 2y</span> subject to:
+                            </p>
+                            <ul class="text-xs font-mono text-slate-600 dark:text-slate-300 mt-2 space-y-1 pl-4 list-disc">
+                                <li>x + 2y ≥ 100</li>
+                                <li>2x - y ≤ 0</li>
+                                <li>2x + y ≤ 200</li>
+                                <li>x ≥ 0, y ≥ 0</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-square-check text-emerald-500"></i> Mathematical Solution Steps
+                            </h4>
+                            <p><strong>Step 1:</strong> Finding Corner Vertices by solving system of lines:</p>
+                            <ul class="list-disc pl-5 space-y-0.5 font-mono">
+                                <li>A (0, 50): Intersection of x+2y=100 & y-axis</li>
+                                <li>B (0, 200): Intersection of 2x+y=200 & y-axis</li>
+                                <li>C (50, 100): Intersection of 2x-y=0 & 2x+y=200</li>
+                                <li>D (20, 40): Intersection of 2x-y=0 & x+2y=100</li>
+                            </ul>
+                            
+                            <!-- Table -->
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                    <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                                        <tr>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Corner Point</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Z = x + 2y Calculation</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 font-bold"><td class="p-2 font-mono">A (0, 50)</td><td class="p-2 font-mono">0 + 2(50)</td><td class="p-2 text-emerald-600">100 (MIN)</td></tr>
+                                        <tr class="bg-blue-50 dark:bg-blue-950/40 font-bold"><td class="p-2 font-mono">B (0, 200)</td><td class="p-2 font-mono">0 + 2(200)</td><td class="p-2 text-blue-600">400 (MAX)</td></tr>
+                                        <tr class="bg-blue-50 dark:bg-blue-950/40 font-bold"><td class="p-2 font-mono">C (50, 100)</td><td class="p-2 font-mono">50 + 2(100)</td><td class="p-2 text-blue-600">250</td></tr>
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 font-bold"><td class="p-2 font-mono">D (20, 40)</td><td class="p-2 font-mono">20 + 2(40)</td><td class="p-2 text-emerald-600">100 (MIN)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg font-medium text-blue-900 dark:text-blue-200">
+                                <i class="fa-solid fa-circle-info mr-1"></i> <strong>Conclusion:</strong> Min Z = <strong>100</strong> at two points (0,50) & (20,40) (multiple optimal solutions along line AD). Max Z = <strong>400</strong> at (0, 200).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 flex flex-col items-center justify-between bg-slate-900 rounded-xl p-4 border border-slate-800 text-white">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-chart-area mr-1"></i> Interactive Real Plot</span>
+                            <span id="q4-zval-badge" class="text-xs font-mono bg-blue-500/20 text-blue-300 border border-blue-400/30 px-2 py-0.5 rounded">Current Z = 100</span>
+                        </div>
+                        <div class="relative w-full aspect-square max-w-[340px]">
+                            <canvas id="q4-canvas" class="w-full h-full bg-slate-950 rounded-lg border border-slate-800"></canvas>
+                        </div>
+                        <div class="w-full mt-4 space-y-2 no-print">
+                            <div class="flex justify-between items-center text-xs">
+                                <label for="q4-z-slider" class="text-slate-300 font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-sliders text-blue-400"></i> Drag Objective Line Z:
+                                </label>
+                                <span id="q4-slider-val" class="font-mono text-blue-400 font-bold">100.0</span>
+                            </div>
+                            <input type="range" id="q4-z-slider" min="50" max="450" step="5" value="100" class="w-full accent-blue-500 bg-slate-700 h-1.5 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUESTION 5 CONTAINER -->
+            <div id="q5-card" class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-card overflow-hidden">
+                <div class="p-5 bg-slate-100/70 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800 flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="px-2.5 py-1 bg-blue-600 text-white rounded-md text-xs">Q5</span>
+                        Real-Life Manufacturing / Formulation Problem
+                    </h3>
+                    <span class="text-xs font-mono bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 px-2.5 py-0.5 rounded-full">Ex 12.2 Real-world</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Problem Statement</h4>
+                            <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed mb-2">
+                                A manufacturer produces two items A and B. Item A requires 1 hr of machine 1 and 3 hrs of machine 2. Item B requires 2 hrs of machine 1 and 1 hr of machine 2. Max hours available per day are 8 and 9 respectively. Profit on A is ₹250 and on B is ₹200.
+                            </p>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Formulated LPP: Maximize <span class="text-blue-600 dark:text-blue-400 font-mono">Z = 250x + 200y</span> subject to:
+                            </p>
+                            <ul class="text-xs font-mono text-slate-600 dark:text-slate-300 mt-2 space-y-1 pl-4 list-disc">
+                                <li>x + 2y ≤ 8</li>
+                                <li>3x + y ≤ 9</li>
+                                <li>x ≥ 0, y ≥ 0</li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-square-check text-emerald-500"></i> Mathematical Solution Steps
+                            </h4>
+                            <p><strong>Step 1:</strong> Intercepts for $x + 2y = 8 \implies (8,0), (0,4)$ and $3x + y = 9 \implies (3,0), (0,9)$.</p>
+                            <p><strong>Step 2:</strong> Solve intersection $B$: $3(8-2y) + y = 9 \implies 24 - 5y = 9 \implies 5y = 15 \implies y = 3, x = 2$. Intersection is $B(2, 3)$.</p>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                    <thead class="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                                        <tr>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Corner Point</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Z = 250x + 200y</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Value (₹)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                        <tr><td class="p-2 font-mono">O (0, 0)</td><td class="p-2 font-mono">250(0) + 200(0)</td><td class="p-2 font-semibold">0</td></tr>
+                                        <tr><td class="p-2 font-mono">A (3, 0)</td><td class="p-2 font-mono">250(3) + 200(0)</td><td class="p-2 font-semibold">750</td></tr>
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold">
+                                            <td class="p-2 font-mono">B (2, 3)</td>
+                                            <td class="p-2 font-mono">250(2) + 200(3)</td>
+                                            <td class="p-2 font-bold text-emerald-600 dark:text-emerald-400">₹1100 (MAX)</td>
+                                        </tr>
+                                        <tr><td class="p-2 font-mono">C (0, 4)</td><td class="p-2 font-mono">250(0) + 200(4)</td><td class="p-2 font-semibold">800</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="p-3 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-lg font-medium text-blue-900 dark:text-blue-200">
+                                <i class="fa-solid fa-circle-info mr-1"></i> <strong>Conclusion:</strong> Max Profit is <strong>₹1,100</strong> by manufacturing <strong>2 units of A</strong> and <strong>3 units of B</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 flex flex-col items-center justify-between bg-slate-900 rounded-xl p-4 border border-slate-800 text-white">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-chart-area mr-1"></i> Interactive Real Plot</span>
+                            <span id="q5-zval-badge" class="text-xs font-mono bg-blue-500/20 text-blue-300 border border-blue-400/30 px-2 py-0.5 rounded">Current Z = 1100</span>
+                        </div>
+                        <div class="relative w-full aspect-square max-w-[340px]">
+                            <canvas id="q5-canvas" class="w-full h-full bg-slate-950 rounded-lg border border-slate-800"></canvas>
+                        </div>
+                        <div class="w-full mt-4 space-y-2 no-print">
+                            <div class="flex justify-between items-center text-xs">
+                                <label for="q5-z-slider" class="text-slate-300 font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-sliders text-blue-400"></i> Drag Objective Line Z:
+                                </label>
+                                <span id="q5-slider-val" class="font-mono text-blue-400 font-bold">1100</span>
+                            </div>
+                            <input type="range" id="q5-z-slider" min="0" max="1500" step="25" value="1100" class="w-full accent-blue-500 bg-slate-700 h-1.5 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2: JEE ADVANCED CHALLENGING QUESTION -->
+        <section class="space-y-8 print-break">
+            <div class="flex items-center justify-between border-b border-purple-200 dark:border-purple-900/50 pb-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <span class="w-2.5 h-6 bg-purple-600 rounded-full inline-block"></span>
+                        Section 2: JEE Advanced Level Challenge (Q6)
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">High-difficulty non-trivial bounding analysis, exact area integration, & objective evaluation.</p>
+                </div>
+                <span class="text-xs font-bold text-purple-600 dark:text-purple-300 bg-purple-100 dark:bg-purple-950/60 px-3 py-1 rounded-lg border border-purple-300 dark:border-purple-800">JEE Advanced Target</span>
+            </div>
+
+            <!-- QUESTION 6 CONTAINER -->
+            <div id="q6-card" class="bg-white dark:bg-slate-900 rounded-2xl border-2 border-purple-500/30 shadow-xl overflow-hidden">
+                <div class="p-5 bg-gradient-to-r from-purple-900 to-indigo-900 text-white flex flex-wrap justify-between items-center gap-2">
+                    <h3 class="font-extrabold flex items-center gap-2 text-base">
+                        <span class="px-2.5 py-1 bg-amber-500 text-slate-950 font-bold rounded-md text-xs">Q6</span>
+                        JEE Advanced Multi-Constraint Feasible Region & Area Analysis
+                    </h3>
+                    <span class="text-xs font-mono bg-purple-800 text-purple-200 px-3 py-1 rounded-full border border-purple-700">Benchmark Problem</span>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6">
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="p-4 rounded-xl bg-purple-50/50 dark:bg-slate-950 border border-purple-200 dark:border-purple-900/50">
+                            <h4 class="text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider mb-1">Problem Statement</h4>
+                            <p class="text-sm font-semibold text-slate-900 dark:text-white">
+                                Let feasible region R be bounded by inequalities:
+                            </p>
+                            <ul class="text-xs font-mono text-slate-700 dark:text-slate-300 mt-2 space-y-1 pl-4 list-disc">
+                                <li>2x + y ≤ 8</li>
+                                <li>x + 2y ≥ 4</li>
+                                <li>x - y ≤ 2</li>
+                                <li>x ≥ 0, y ≥ 0</li>
+                            </ul>
+                            <p class="text-xs text-slate-700 dark:text-slate-300 mt-2 font-medium">
+                                <strong>Task:</strong> Determine the exact Maximum and Minimum values of <span class="text-purple-600 dark:text-purple-400 font-mono font-bold">Z = 5x + 3y</span> over region R, and compute the exact Area of Region R.
+                            </p>
+                        </div>
+
+                        <div class="space-y-3 text-xs text-slate-700 dark:text-slate-300">
+                            <h4 class="font-bold text-slate-900 dark:text-white text-sm flex items-center gap-1.5">
+                                <i class="fa-solid fa-calculator text-purple-500"></i> Rigorous Mathematical Solution
+                            </h4>
+                            <p><strong>Step 1: Vertices of Feasible Quadrilateral ABCD:</strong></p>
+                            <ul class="list-disc pl-5 space-y-1 font-mono">
+                                <li><strong>A (0, 2):</strong> Intersection of x = 0 and x + 2y = 4.</li>
+                                <li><strong>B (0, 8):</strong> Intersection of x = 0 and 2x + y = 8.</li>
+                                <li><strong>C (10/3, 4/3):</strong> Solving 2x + y = 8 and x - y = 2 simultaneously. Adding gives 3x = 10 $\implies x = 10/3, y = 4/3$.</li>
+                                <li><strong>D (8/3, 2/3):</strong> Solving x + 2y = 4 and x - y = 2 simultaneously. Subtracting gives 3y = 2 $\implies y = 2/3, x = 8/3$.</li>
+                            </ul>
+
+                            <!-- Table -->
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse border border-slate-200 dark:border-slate-800 rounded-lg">
+                                    <thead class="bg-purple-100 dark:bg-purple-950 text-purple-900 dark:text-purple-200">
+                                        <tr>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Corner Point</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Z = 5x + 3y Calculation</th>
+                                            <th class="p-2 border border-slate-200 dark:border-slate-800">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+                                        <tr class="bg-emerald-50 dark:bg-emerald-950/40 font-bold"><td class="p-2 font-mono">A (0, 2)</td><td class="p-2 font-mono">5(0) + 3(2)</td><td class="p-2 text-emerald-600">6 (MIN)</td></tr>
+                                        <tr class="bg-purple-100 dark:bg-purple-900/40 font-bold"><td class="p-2 font-mono">B (0, 8)</td><td class="p-2 font-mono">5(0) + 3(8)</td><td class="p-2 text-purple-600">24 (MAX)</td></tr>
+                                        <tr><td class="p-2 font-mono">C (10/3, 4/3)</td><td class="p-2 font-mono">5(10/3) + 3(4/3) = 62/3</td><td class="p-2 font-semibold">20.67</td></tr>
+                                        <tr><td class="p-2 font-mono">D (8/3, 2/3)</td><td class="p-2 font-mono">5(8/3) + 3(2/3) = 46/3</td><td class="p-2 font-semibold">15.33</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p><strong>Step 2: Area of Quadrilateral Region R:</strong></p>
+                            <p class="leading-relaxed">
+                                Splitting region along the vertical segment along the y-axis base $AB$ (length = $8 - 2 = 6$ units):<br>
+                                $\text{Area}(R) = \frac{1}{2} \times \text{Base} \times (x_C - x_D) = \frac{1}{2} \times 6 \times \left(\frac{10}{3} - \frac{8}{3}\right) = 3 \times \frac{2}{3} = \mathbf{5\text{ sq. units}}$.
+                            </p>
+
+                            <div class="p-3 bg-purple-50 dark:bg-purple-950/50 border border-purple-300 dark:border-purple-800 rounded-lg font-medium text-purple-950 dark:text-purple-200">
+                                <i class="fa-solid fa-trophy text-amber-500 mr-1"></i> <strong>JEE Final Result:</strong> Max Z = <strong>24</strong> at B(0,8) | Min Z = <strong>6</strong> at A(0,2) | Enclosed Area = <strong>5 sq. units</strong>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 flex flex-col items-center justify-between bg-slate-900 rounded-xl p-4 border border-slate-800 text-white">
+                        <div class="w-full flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider"><i class="fa-solid fa-chart-area mr-1"></i> Dynamic JEE Plot</span>
+                            <span id="q6-zval-badge" class="text-xs font-mono bg-purple-500/20 text-purple-300 border border-purple-400/30 px-2 py-0.5 rounded">Current Z = 24.0</span>
+                        </div>
+                        <div class="relative w-full aspect-square max-w-[340px]">
+                            <canvas id="q6-canvas" class="w-full h-full bg-slate-950 rounded-lg border border-slate-800"></canvas>
+                        </div>
+                        <div class="w-full mt-4 space-y-2 no-print">
+                            <div class="flex justify-between items-center text-xs">
+                                <label for="q6-z-slider" class="text-slate-300 font-medium flex items-center gap-1">
+                                    <i class="fa-solid fa-sliders text-purple-400"></i> Sweep Z = 5x + 3y:
+                                </label>
+                                <span id="q6-slider-val" class="font-mono text-purple-400 font-bold">24.0</span>
+                            </div>
+                            <input type="range" id="q6-z-slider" min="0" max="30" step="0.5" value="24" class="w-full accent-purple-500 bg-slate-700 h-1.5 rounded-lg cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-6 text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800">
+            <p class="font-semibold text-slate-700 dark:text-slate-300">DAV SECTOR 4 — Linear Programming Learning Platform</p>
+            <p class="mt-1">Prepared by <strong>Faculty: Ravi Shankar</strong> • Interactive HTML5 Canvas Plotting Module</p>
+        </footer>
+    </main>
+
+    <!-- INTERACTIVE CANVAS ENGINE SCRIPT -->
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('themeToggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        /**
+         * Generic HTML5 Canvas Plotter for LPP
+         */
+        function drawLPPGraph(config) {
+            const canvas = document.getElementById(config.canvasId);
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            // Set device pixel ratio for sharp rendering
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+
+            const width = rect.width;
+            const height = rect.height;
+            const padding = 35;
+
+            const maxX = config.maxX || 10;
+            const maxY = config.maxY || 10;
+
+            // Map Cartesian to Canvas
+            function toCanvasX(x) {
+                return padding + (x / maxX) * (width - 2 * padding);
+            }
+            function toCanvasY(y) {
+                return height - padding - (y / maxY) * (height - 2 * padding);
+            }
+
+            // Clear Background
+            ctx.fillStyle = '#020617'; // slate-950
+            ctx.fillRect(0, 0, width, height);
+
+            // Grid Lines
+            ctx.strokeStyle = '#1e293b'; // slate-800
+            ctx.lineWidth = 1;
+            const gridSteps = 5;
+            for (let i = 0; i <= gridSteps; i++) {
+                const gx = (maxX / gridSteps) * i;
+                const gy = (maxY / gridSteps) * i;
+                
+                // Vertical grid
+                ctx.beginPath();
+                ctx.moveTo(toCanvasX(gx), padding);
+                ctx.lineTo(toCanvasX(gx), height - padding);
+                ctx.stroke();
+
+                // Horizontal grid
+                ctx.beginPath();
+                ctx.moveTo(padding, toCanvasY(gy));
+                ctx.lineTo(width - padding, toCanvasY(gy));
+                ctx.stroke();
+            }
+
+            // Axes
+            ctx.strokeStyle = '#64748b'; // slate-500
+            ctx.lineWidth = 2;
+            
+            // X-Axis
+            ctx.beginPath();
+            ctx.moveTo(padding - 5, height - padding);
+            ctx.lineTo(width - 15, height - padding);
+            ctx.stroke();
+
+            // Y-Axis
+            ctx.beginPath();
+            ctx.moveTo(padding, height - padding + 5);
+            ctx.lineTo(padding, 15);
+            ctx.stroke();
+
+            // Axis Labels & Numbers
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '10px Inter, sans-serif';
+            ctx.fillText('X', width - 12, height - padding + 3);
+            ctx.fillText('Y', padding - 3, 12);
+
+            for (let i = 0; i <= maxX; i += Math.ceil(maxX / 5)) {
+                if (i === 0) continue;
+                ctx.fillText(i.toString(), toCanvasX(i) - 4, height - padding + 15);
+            }
+            for (let i = 0; i <= maxY; i += Math.ceil(maxY / 5)) {
+                if (i === 0) continue;
+                ctx.fillText(i.toString(), padding - 22, toCanvasY(i) + 3);
+            }
+
+            // Draw Feasible Polygon Shading
+            if (config.polygon && config.polygon.length > 0) {
+                ctx.beginPath();
+                ctx.moveTo(toCanvasX(config.polygon[0].x), toCanvasY(config.polygon[0].y));
+                for (let i = 1; i < config.polygon.length; i++) {
+                    ctx.lineTo(toCanvasX(config.polygon[i].x), toCanvasY(config.polygon[i].y));
+                }
+                ctx.closePath();
+
+                // Fill translucent region
+                ctx.fillStyle = config.polyColor || 'rgba(59, 130, 246, 0.35)'; // Blue tint
+                ctx.fill();
+                ctx.strokeStyle = config.polyBorderColor || '#3b82f6';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+            }
+
+            // Draw Boundary Lines
+            if (config.lines) {
+                config.lines.forEach((line) => {
+                    ctx.strokeStyle = line.color || '#e2e8f0';
+                    ctx.lineWidth = line.width || 1.5;
+                    if (line.dash) ctx.setLineDash(line.dash);
+                    else ctx.setLineDash([]);
+
+                    ctx.beginPath();
+                    ctx.moveTo(toCanvasX(line.p1.x), toCanvasY(line.p1.y));
+                    ctx.lineTo(toCanvasX(line.p2.x), toCanvasY(line.p2.y));
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                });
+            }
+
+            // Draw Objective Function Z Line
+            if (config.zLine) {
+                const z = config.zLine.val;
+                const a = config.zLine.a;
+                const b = config.zLine.b;
+                
+                // ax + by = z
+                let p1, p2;
+                if (b !== 0) {
+                    p1 = { x: 0, y: z / b };
+                    p2 = { x: maxX, y: (z - a * maxX) / b };
+                } else {
+                    p1 = { x: z / a, y: 0 };
+                    p2 = { x: z / a, y: maxY };
+                }
+
+                ctx.strokeStyle = config.zLine.color || '#ec4899'; // Pink line
+                ctx.lineWidth = 2.5;
+                ctx.setLineDash([5, 4]);
+
+                ctx.beginPath();
+                ctx.moveTo(toCanvasX(p1.x), toCanvasY(p1.y));
+                ctx.lineTo(toCanvasX(p2.x), toCanvasY(p2.y));
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            // Draw Corner Points & Labels
+            if (config.points) {
+                config.points.forEach((pt) => {
+                    const cx = toCanvasX(pt.x);
+                    const cy = toCanvasY(pt.y);
+
+                    ctx.fillStyle = pt.color || '#38bdf8';
+                    ctx.beginPath();
+                    ctx.arc(cx, cy, 4.5, 0, 2 * Math.PI);
+                    ctx.fill();
+
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+
+                    // Point Text Label
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 10px Inter, sans-serif';
+                    ctx.fillText(pt.label, cx + 6, cy - 6);
+                });
+            }
+        }
+
+        // INITIALIZE ALL 6 CANVASES WITH SLIDER LISTENERS
+        window.addEventListener('load', () => {
+
+            // Q1 Setup
+            const q1Config = {
+                canvasId: 'q1-canvas',
+                maxX: 6, maxY: 6,
+                polygon: [{x:0, y:0}, {x:4, y:0}, {x:0, y:4}],
+                lines: [{ p1: {x:0, y:4}, p2: {x:4, y:0}, color: '#3b82f6' }],
+                points: [
+                    {x:0, y:0, label:'O(0,0)'},
+                    {x:4, y:0, label:'A(4,0)'},
+                    {x:0, y:4, label:'B(0,4)', color:'#10b981'}
+                ],
+                zLine: { a: 3, b: 4, val: 16 }
+            };
+            drawLPPGraph(q1Config);
+
+            document.getElementById('q1-z-slider').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('q1-slider-val').innerText = val.toFixed(1);
+                document.getElementById('q1-zval-badge').innerText = `Current Z = ${val.toFixed(1)}`;
+                q1Config.zLine.val = val;
+                drawLPPGraph(q1Config);
+            });
+
+
+            // Q2 Setup
+            const q2Config = {
+                canvasId: 'q2-canvas',
+                maxX: 10, maxY: 8,
+                polygon: [{x:0, y:0}, {x:4, y:0}, {x:2, y:3}, {x:0, y:4}],
+                lines: [
+                    { p1: {x:0, y:4}, p2: {x:8, y:0}, color: '#3b82f6' },
+                    { p1: {x:0, y:6}, p2: {x:4, y:0}, color: '#f59e0b' }
+                ],
+                points: [
+                    {x:0, y:0, label:'O(0,0)'},
+                    {x:4, y:0, label:'A(4,0)', color:'#10b981'},
+                    {x:2, y:3, label:'B(2,3)'},
+                    {x:0, y:4, label:'C(0,4)'}
+                ],
+                zLine: { a: -3, b: 4, val: -12 }
+            };
+            drawLPPGraph(q2Config);
+
+            document.getElementById('q2-z-slider').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('q2-slider-val').innerText = val.toFixed(1);
+                document.getElementById('q2-zval-badge').innerText = `Current Z = ${val.toFixed(1)}`;
+                q2Config.zLine.val = val;
+                drawLPPGraph(q2Config);
+            });
+
+
+            // Q3 Setup
+            const q3Config = {
+                canvasId: 'q3-canvas',
+                maxX: 6, maxY: 6,
+                polygon: [{x:0, y:0}, {x:2, y:0}, {x:20/19, y:45/19}, {x:0, y:3}],
+                lines: [
+                    { p1: {x:0, y:3}, p2: {x:5, y:0}, color: '#3b82f6' },
+                    { p1: {x:0, y:5}, p2: {x:2, y:0}, color: '#ec4899' }
+                ],
+                points: [
+                    {x:0, y:0, label:'O(0,0)'},
+                    {x:2, y:0, label:'A(2,0)'},
+                    {x:20/19, y:45/19, label:'B(1.05, 2.37)', color:'#10b981'},
+                    {x:0, y:3, label:'C(0,3)'}
+                ],
+                zLine: { a: 5, b: 3, val: 12.37 }
+            };
+            drawLPPGraph(q3Config);
+
+            document.getElementById('q3-z-slider').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('q3-slider-val').innerText = val.toFixed(2);
+                document.getElementById('q3-zval-badge').innerText = `Current Z = ${val.toFixed(2)}`;
+                q3Config.zLine.val = val;
+                drawLPPGraph(q3Config);
+            });
+
+
+            // Q4 Setup
+            const q4Config = {
+                canvasId: 'q4-canvas',
+                maxX: 120, maxY: 250,
+                polygon: [{x:0, y:50}, {x:0, y:200}, {x:50, y:100}, {x:20, y:40}],
+                lines: [
+                    { p1: {x:0, y:50}, p2: {x:100, y:0}, color: '#3b82f6' },
+                    { p1: {x:0, y:0}, p2: {x:100, y:200}, color: '#f59e0b' },
+                    { p1: {x:0, y:200}, p2: {x:100, y:0}, color: '#ec4899' }
+                ],
+                points: [
+                    {x:0, y:50, label:'A(0,50)', color:'#10b981'},
+                    {x:0, y:200, label:'B(0,200)', color:'#3b82f6'},
+                    {x:50, y:100, label:'C(50,100)'},
+                    {x:20, y:40, label:'D(20,40)', color:'#10b981'}
+                ],
+                zLine: { a: 1, b: 2, val: 100 }
+            };
+            drawLPPGraph(q4Config);
+
+            document.getElementById('q4-z-slider').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('q4-slider-val').innerText = val.toFixed(0);
+                document.getElementById('q4-zval-badge').innerText = `Current Z = ${val.toFixed(0)}`;
+                q4Config.zLine.val = val;
+                drawLPPGraph(q4Config);
+            });
+
+
+            // Q5 Setup
+            const q5Config = {
+                canvasId: 'q5-canvas',
+                maxX: 10, maxY: 10,
+                polygon: [{x:0, y:0}, {x:3, y:0}, {x:2, y:3}, {x:0, y:4}],
+                lines: [
+                    { p1: {x:0, y:4}, p2: {x:8, y:0}, color: '#3b82f6' },
+                    { p1: {x:0, y:9}, p2: {x:3, y:0}, color: '#10b981' }
+                ],
+                points: [
+                    {x:0, y:0, label:'O(0,0)'},
+                    {x:3, y:0, label:'A(3,0)'},
+                    {x:2, y:3, label:'B(2,3)', color:'#10b981'},
+                    {x:0, y:4, label:'C(0,4)'}
+                ],
+                zLine: { a: 250, b: 200, val: 1100 }
+            };
+            drawLPPGraph(q5Config);
+
+            document.getElementById('q5-z-slider').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('q5-slider-val').innerText = val.toFixed(0);
+                document.getElementById('q5-zval-badge').innerText = `Current Z = ${val.toFixed(0)}`;
+                q5Config.zLine.val = val;
+                drawLPPGraph(q5Config);
+            });
+
+
+            // Q6 JEE Setup
+            const q6Config = {
+                canvasId: 'q6-canvas',
+                maxX: 6, maxY: 10,
+                polyColor: 'rgba(168, 85, 247, 0.35)',
+                polyBorderColor: '#a855f7',
+                polygon: [{x:0, y:2}, {x:0, y:8}, {x:10/3, y:4/3}, {x:8/3, y:2/3}],
+                lines: [
+                    { p1: {x:0, y:8}, p2: {x:4, y:0}, color: '#ef4444' }, // 2x + y = 8
+                    { p1: {x:0, y:2}, p2: {x:4, y:0}, color: '#3b82f6' }, // x + 2y = 4
+                    { p1: {x:2, y:0}, p2: {x:6, y:4}, color: '#f59e0b' }  // x - y = 2
+                ],
+                points: [
+                    {x:0, y:2, label:'A(0,2)', color:'#10b981'},
+                    {x:0, y:8, label:'B(0,8)', color:'#a855f7'},
+                    {x:10/3, y:4/3, label:'C(3.33, 1.33)'},
+                    {x:8/3, y:2/3, label:'D(2.67, 0.67)'}
+                ],
+                zLine: { a: 5, b: 3, val: 24, color: '#a855f7' }
+            };
+            drawLPPGraph(q6Config);
+
+            document.getElementById('q6-z-slider').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('q6-slider-val').innerText = val.toFixed(1);
+                document.getElementById('q6-zval-badge').innerText = `Current Z = ${val.toFixed(1)}`;
+                q6Config.zLine.val = val;
+                drawLPPGraph(q6Config);
+            });
+
+            // Redraw graphs on window resize
+            window.addEventListener('resize', () => {
+                drawLPPGraph(q1Config);
+                drawLPPGraph(q2Config);
+                drawLPPGraph(q3Config);
+                drawLPPGraph(q4Config);
+                drawLPPGraph(q5Config);
+                drawLPPGraph(q6Config);
+            });
+        });
+    </script>
+</body>
+</html>
