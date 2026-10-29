@@ -1,1 +1,474 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mathematics Course | Ravi Shankar</title>
+
+    <meta name="description"
+          content="Topic-wise Mathematics notes, PDFs and study material by Ravi Shankar.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #123c69;
+            --secondary: #1e6091;
+            --accent: #f4b942;
+            --background: #f4f7fb;
+            --text: #243247;
+            --muted: #64748b;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #102a43, #1e6091);
+            color: white;
+            padding: 32px 18px;
+            text-align: center;
+        }
+
+        .brand {
+            font-size: 14px;
+            color: #f4d58d;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        header h1 {
+            font-size: clamp(28px, 5vw, 42px);
+            margin: 10px 0;
+        }
+
+        header p {
+            color: #e1ebf5;
+            font-size: 16px;
+        }
+
+        .header-tag {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 7px 16px;
+            border: 1px solid #91b9dc;
+            border-radius: 30px;
+            font-size: 13px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            padding: 13px 15px;
+            text-align: center;
+            box-shadow: 0 3px 12px #102a4310;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #d18b00;
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            background: white;
+            padding: 26px;
+            border-radius: 16px;
+            border-left: 5px solid var(--accent);
+            box-shadow: 0 5px 20px #102a4308;
+            margin-bottom: 30px;
+        }
+
+        .welcome h2 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            color: var(--muted);
+        }
+
+        .section-heading {
+            margin: 32px 0 18px;
+        }
+
+        .section-heading h2 {
+            color: var(--primary);
+            font-size: 26px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Search */
+        .search-box {
+            margin: 20px 0 25px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 18px;
+            border: 1px solid #d8e1ec;
+            border-radius: 12px;
+            font-size: 15px;
+            outline: none;
+            background: white;
+        }
+
+        .search-box input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px #1e609120;
+        }
+
+        /* Topic cards */
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 15px;
+            padding: 23px;
+            border: 1px solid #e5ebf2;
+            box-shadow: 0 5px 18px #102a4308;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px #102a4315;
+        }
+
+        .topic-number {
+            display: inline-block;
+            width: fit-content;
+            background: #eaf2fb;
+            color: var(--secondary);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 11px;
+            border-radius: 20px;
+            margin-bottom: 13px;
+        }
+
+        .topic-card h3 {
+            color: var(--primary);
+            font-size: 21px;
+            margin-bottom: 9px;
+        }
+
+        .topic-card p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .pdf-button {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: var(--primary);
+            color: white;
+            padding: 11px 15px;
+            border-radius: 9px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .pdf-button:hover {
+            background: var(--secondary);
+        }
+
+        .coming-soon {
+            display: block;
+            text-align: center;
+            background: #eef2f7;
+            color: #64748b;
+            padding: 11px;
+            border-radius: 9px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .empty-message {
+            display: none;
+            text-align: center;
+            padding: 25px;
+            color: var(--muted);
+            background: white;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 55px;
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 4px 0;
+            color: #d8e5f2;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 27px 15px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+            }
+
+            .container {
+                margin-top: 22px;
+                padding: 0 14px;
+            }
+
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .welcome {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand">Ravi Shankar • IIT Bhubaneswar</div>
+
+        <h1>Mathematics Course</h1>
+
+        <p>Understand Concepts. Master Mathematics.</p>
+
+        <div class="header-tag">
+            Topic-Wise Notes | PDF Study Material
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#course">Course Topics</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <main class="container">
+
+        <!-- WELCOME -->
+        <section class="welcome" id="about">
+            <h2>Welcome to Your Mathematics Classroom!</h2>
+
+            <p>
+                Learn Mathematics topic by topic with organised notes
+                and PDF study materials. Start with Logarithms and
+                strengthen your mathematical foundation step by step.
+            </p>
+        </section>
+
+        <!-- COURSE -->
+        <section id="course">
+
+            <div class="section-heading">
+                <h2>📘 Course Content</h2>
+                <p>Choose a topic below to access its study material.</p>
+            </div>
+
+            <!-- SEARCH -->
+            <div class="search-box">
+                <input
+                    type="search"
+                    id="topicSearch"
+                    placeholder="Search a topic, e.g. Logarithm..."
+                    aria-label="Search course topics"
+                >
+            </div>
+
+            <!-- TOPIC CARDS -->
+            <div class="topic-grid" id="topicGrid">
+
+                <!-- TOPIC 1: LOGARITHM -->
+                <article class="topic-card">
+                    <span class="topic-number">TOPIC 01</span>
+
+                    <h3>Logarithms</h3>
+
+                    <p>
+                        Learn logarithmic laws, properties, formulas
+                        and solved examples from the basics.
+                    </p>
+
+                    <a
+                        class="pdf-button"
+                        href="Logarithm_Notes_Ravi_Shankar .pdf"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📄 Open Logarithm PDF
+                    </a>
+                </article>
+
+                <!-- TOPIC 2 -->
+                <article class="topic-card">
+                    <span class="topic-number">TOPIC 02</span>
+
+                    <h3>Exponents & Powers</h3>
+
+                    <p>
+                        Understand laws of exponents, powers
+                        and important algebraic rules.
+                    </p>
+
+                    <span class="coming-soon">Notes Coming Soon</span>
+                </article>
+
+                <!-- TOPIC 3 -->
+                <article class="topic-card">
+                    <span class="topic-number">TOPIC 03</span>
+
+                    <h3>Algebraic Identities</h3>
+
+                    <p>
+                        Important identities, simplification
+                        techniques and practice questions.
+                    </p>
+
+                    <span class="coming-soon">Notes Coming Soon</span>
+                </article>
+
+                <!-- TOPIC 4 -->
+                <article class="topic-card">
+                    <span class="topic-number">TOPIC 04</span>
+
+                    <h3>Quadratic Equations</h3>
+
+                    <p>
+                        Learn roots, discriminants, formulas
+                        and methods of solving equations.
+                    </p>
+
+                    <span class="coming-soon">Notes Coming Soon</span>
+                </article>
+
+                <!-- TOPIC 5 -->
+                <article class="topic-card">
+                    <span class="topic-number">TOPIC 05</span>
+
+                    <h3>Trigonometry</h3>
+
+                    <p>
+                        Explore trigonometric ratios, identities,
+                        equations and important formulas.
+                    </p>
+
+                    <span class="coming-soon">Notes Coming Soon</span>
+                </article>
+
+                <!-- TOPIC 6 -->
+                <article class="topic-card">
+                    <span class="topic-number">TOPIC 06</span>
+
+                    <h3>Sequences & Series</h3>
+
+                    <p>
+                        Study sequences, arithmetic progressions,
+                        geometric progressions and series.
+                    </p>
+
+                    <span class="coming-soon">Notes Coming Soon</span>
+                </article>
+
+            </div>
+
+            <div class="empty-message" id="emptyMessage">
+                No topic found. Try another keyword.
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <h3>Ravi Shankar</h3>
+        <p>Mathematics Educator | IIT Bhubaneswar</p>
+        <p>Learn with clarity. Practice with confidence.</p>
+        <p>© <span id="year"></span> Ravi Shankar. All rights reserved.</p>
+    </footer>
+
+    <!-- SEARCH FUNCTION -->
+    <script>
+        const searchInput = document.getElementById("topicSearch");
+        const topicCards = document.querySelectorAll(".topic-card");
+        const emptyMessage = document.getElementById("emptyMessage");
+
+        searchInput.addEventListener("input", function () {
+            const searchText = this.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            topicCards.forEach(function (card) {
+                const matches = card.textContent
+                    .toLowerCase()
+                    .includes(searchText);
+
+                card.style.display = matches ? "flex" : "none";
+
+                if (matches) visibleCount++;
+            });
+
+            emptyMessage.style.display =
+                visibleCount === 0 ? "block" : "none";
+        });
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
