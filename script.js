@@ -31,3 +31,25 @@ content.style.display="block";
 }
 
 });
+<script>
+  const modal = document.getElementById("examModal");
+  const btn = document.getElementById("upcomingExamBtn");
+  const span = document.getElementsByClassName("close")[0];
+
+  // Button click par modal open hoga
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // 'X' par click karne par modal band hoga
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // Modal ke bahar click karne par bhi band ho jayega
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
