@@ -1,396 +1,268 @@
 <!DOCTYPE html>
-<html lang="hi">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Ravi Shankar Mathematics</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Rozha+One&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
-            color: #f8fafc;
-            min-height: 100vh;
-        }
+    <link rel="stylesheet" href="style.css">
 
-        .hindi-font {
-            font-family: 'Rozha One', serif;
-        }
-
-        .glass-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(99, 102, 241, 0.2);
-        }
-
-        .highlight-card {
-            background: linear-gradient(135deg, rgba(225, 29, 72, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
-            border: 2px solid #f43f5e;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlight-card::before {
-            content: 'NEW / NAYA';
-            position: absolute;
-            top: 12px;
-            right: -30px;
-            background: #f43f5e;
-            color: white;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 2px 30px;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.95;
-            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
-            transform: scale(1.02);
-        }
-
-        .pulse-glow {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(244, 63, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
-        }
-    </style>
 </head>
-<body class="p-0 m-0">
 
-    <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-40 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <div class="bg-indigo-600 text-white p-2 rounded-xl font-black text-xl shadow-lg">RM</div>
-                <span class="text-2xl font-bold tracking-tight text-white">Ravi <span class="text-indigo-400">Maths</span></span>
-            </div>
 
-            <!-- Mobile Menu Toggle -->
-            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white text-2xl focus:outline-none">
-                <i class="fa-solid fa-bars"></i>
-            </button>
 
-            <!-- Navigation Links -->
-            <ul id="nav-links" class="hidden md:flex space-x-8 font-medium text-slate-300 text-sm">
-                <li><a href="#" class="hover:text-indigo-400 transition-colors py-1 border-b-2 border-indigo-500 text-white">Home</a></li>
-                <li><a href="#classes" class="hover:text-indigo-400 transition-colors py-1">Class 9</a></li>
-                <li><a href="#classes" class="hover:text-indigo-400 transition-colors py-1">Class 10</a></li>
-                <li><a href="#classes" class="hover:text-indigo-400 transition-colors py-1">Class 11</a></li>
-                <li><a href="#classes" class="hover:text-indigo-400 transition-colors py-1">Class 12</a></li>
-                <li><a href="#classes" class="hover:text-indigo-400 transition-colors py-1">JEE Advanced</a></li>
-                <li><a href="#contact" class="hover:text-indigo-400 transition-colors py-1">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+<body>
 
-    <!-- Mobile Dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-b border-slate-800 px-6 py-4 space-y-3 text-slate-300 text-center font-medium">
-        <a href="#" class="block py-2 hover:text-indigo-400">Home</a>
-        <a href="#classes" class="block py-2 hover:text-indigo-400">Class 9</a>
-        <a href="#classes" class="block py-2 hover:text-indigo-400">Class 10</a>
-        <a href="#classes" class="block py-2 hover:text-indigo-400">Class 11</a>
-        <a href="#classes" class="block py-2 hover:text-indigo-400">Class 12</a>
-        <a href="#classes" class="block py-2 hover:text-indigo-400">JEE Advanced</a>
-        <a href="#contact" class="block py-2 hover:text-indigo-400">Contact</a>
+
+
+<nav>
+
+    <h2>Ravi Maths</h2>
+
+
+
+    <ul>
+
+        <li><a href="#">Home</a></li>
+
+        <li><a href="#">Class 9</a></li>
+
+        <li><a href="#">Class 10</a></li
+
+        <li><a href="#">Class 11</a></li>
+
+        <li><a href="./Class%2011.html">Class 11</a></li>
+
+        <li><a href="class12.html">Class 12</a></li>
+
+        
+
+        <li><a href="#">Contact</a></li>
+
+    </ul>
+
+</nav>
+
+
+
+<div class="hero">
+
+
+
+    <div class="profile-pictures">
+
+        <img src="Pic Ravi.jpg" alt="Ravi Shankar" class="profile-photo">
+
+        <img src="Hc verma.jpg" alt="H.C. Verma" class="profile-photo">
+
     </div>
 
-    <!-- Hero Section -->
-    <div class="max-w-5xl mx-auto px-6 pt-12 pb-16 text-center">
-        <!-- Profile Photos -->
-        <div class="flex justify-center items-center -space-x-4 mb-6">
-            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-indigo-500 overflow-hidden shadow-2xl relative z-10 bg-slate-800">
-                <img src="https://placehold.co/300x300/1e1b4b/ffffff?text=Ravi+Shankar" alt="Ravi Shankar" class="w-full h-full object-cover">
-            </div>
-            <div class="w-24 h-24 md:w-28 md:h-28 rounded-full border-4 border-rose-500 overflow-hidden shadow-2xl relative z-0 bg-slate-800">
-                <img src="https://placehold.co/300x300/881337/ffffff?text=H.C.+Verma" alt="H.C. Verma" class="w-full h-full object-cover">
-            </div>
-        </div>
 
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-2 text-white">Ravi Shankar</h1>
-        <h2 class="text-xl md:text-2xl font-semibold gradient-text mb-6">Advanced Mathematics</h2>
 
-        <!-- Profile Info Cards -->
-        <div class="bg-slate-800/50 backdrop-blur border border-slate-700/60 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto mb-8 shadow-xl text-left md:text-center space-y-3">
-            <p class="text-slate-200 text-base md:text-lg">
-                🎓 <strong>Post-Graduation</strong> – <span class="text-indigo-300">IIT Bhubaneswar</span>
-            </p>
-            <p class="text-slate-200 text-base md:text-lg">
-                👨‍🏫 <strong>PGT Mathematics Teacher</strong>
-            </p>
-            <p class="text-slate-300 text-sm md:text-base">
-                📚 <strong>Expert in:</strong> IIT-JEE • TIFR • ISI • NBHM • CMI • IIT-JAM • CSIR-NET
-            </p>
-            <div class="pt-2 flex flex-wrap justify-center gap-2 text-xs font-semibold">
-                <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-800 px-3 py-1.5 rounded-full">Calculus</span>
-                <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-800 px-3 py-1.5 rounded-full">Abstract Algebra</span>
-                <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-800 px-3 py-1.5 rounded-full">Complex Analysis</span>
-                <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-800 px-3 py-1.5 rounded-full">Linear Algebra</span>
-                <span class="bg-indigo-950/80 text-indigo-300 border border-indigo-800 px-3 py-1.5 rounded-full">Real Analysis</span>
-            </div>
-        </div>
+    <h1>Ravi Shankar</h1>
 
-        <!-- Hindi Shayari Box -->
-        <div class="max-w-2xl mx-auto bg-gradient-to-r from-indigo-950/40 via-purple-950/40 to-indigo-950/40 border-l-4 border-amber-400 p-6 rounded-r-2xl mb-8 text-amber-200 shadow-lg">
-            <p class="hindi-font text-lg md:text-xl leading-relaxed">
-                "हमने सवालों से ही अपने सफ़र की राह माँगी है,<br>
-                जहाँ दुनिया रुक गई, हमने वहीं से गणित बाँधी है।"
-            </p>
-            <span class="block mt-3 text-xs tracking-widest font-bold text-amber-400/80 uppercase">— RAVI SHANKAR</span>
-        </div>
 
-        <p class="text-lg md:text-xl text-slate-300 mb-8 font-light">
-            Learn Mathematics in the easiest way.
-        </p>
 
-        <a href="#classes" class="inline-block btn-primary text-white font-bold px-8 py-3.5 rounded-xl shadow-lg cursor-pointer">
-            Start Learning <i class="fa-solid fa-arrow-down ml-2"></i>
-        </a>
-    </div>
+    <h2 class="subtitle">Advanced Mathematics</h2>
 
-    <!-- Cards Section -->
-    <section id="classes" class="max-w-7xl mx-auto px-6 py-12">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-extrabold text-white">Choose Your Class</h2>
-            <p class="text-slate-400 mt-2">Select your course or upcoming exam test practice material</p>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-            <!-- 1. NEW CARD: Upcoming Exam & PDFs (FIRST POSITION - RED HIGHLIGHTED AREA) -->
-            <div class="glass-card highlight-card pulse-glow rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-3 mb-3">
-                        <span class="text-3xl">📝</span>
-                        <h3 class="text-xl font-bold text-white">Upcoming Exam & PDFs</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-4 leading-relaxed">
-                        Important Question Practice for <strong>Class XI</strong> & <strong>Class XII</strong> (Downloadable Practice PDFs)
-                    </p>
-                </div>
-                <button onclick="openPdfModal()" class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl transition shadow-lg flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-file-pdf"></i>
-                    <span>Open PDFs & Tests</span>
-                </button>
-            </div>
+<div class="profile-info">
 
-            <!-- 2. Class 9 Card -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-3 mb-3">
-                        <span class="text-3xl">📘</span>
-                        <h3 class="text-xl font-bold text-white">Class 9</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-4">NCERT (Ganita Manjari) End of Chapter Solutions</p>
-                </div>
-                <a href="#" class="block">
-                    <button class="w-full bg-indigo-600/80 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition">
-                        Open
-                    </button>
-                </a>
-            </div>
 
-            <!-- 3. Advanced Course -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-3 mb-3">
-                        <span class="text-3xl">📙</span>
-                        <h3 class="text-xl font-bold text-white">Advanced Course</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-4">For Better Future (AI and SI Foundations)</p>
-                </div>
-                <a href="#" class="block">
-                    <button class="w-full bg-indigo-600/80 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition">
-                        Open
-                    </button>
-                </a>
-            </div>
 
-            <!-- 4. Class 11 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-3 mb-3">
-                        <span class="text-3xl">📗</span>
-                        <h3 class="text-xl font-bold text-white">Class 11</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-4">
-                        IIT JEE Level, Algebra, Trigonometry, Calculus
-                    </p>
-                </div>
-                <a href="#" class="block">
-                    <button class="w-full bg-indigo-600/80 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition">
-                        Open
-                    </button>
-                </a>
-            </div>
+<p>🎓 <strong>Post-Graduation</strong> – IIT Bhubaneswar</p>
 
-            <!-- 5. Class 12 -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-3 mb-3">
-                        <span class="text-3xl">📕</span>
-                        <h3 class="text-xl font-bold text-white">Class 12</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-4">Complete CBSE Mathematics with Solutions</p>
-                </div>
-                <a href="#" class="block">
-                    <button class="w-full bg-indigo-600/80 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-xl transition">
-                        Open
-                    </button>
-                </a>
-            </div>
 
-            <!-- 6. JEE Advanced PRO Version -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between">
-                <div>
-                    <div class="flex items-center space-x-3 mb-3">
-                        <span class="text-3xl">🏆</span>
-                        <h3 class="text-xl font-bold text-amber-400">JEE Advanced (PRO)</h3>
-                    </div>
-                    <p class="text-slate-300 text-sm mb-4">Special Pure Mathematics Problem Sets</p>
-                </div>
-                <a href="#" class="block">
-                    <button class="w-full bg-amber-600/80 hover:bg-amber-600 text-white font-semibold py-2.5 rounded-xl transition">
-                        Open PRO
-                    </button>
-                </a>
-            </div>
 
-        </div>
-    </section>
+<p>👨‍🏫 <strong>PGT Mathematics Teacher</strong></p>
 
-    <!-- PDF Upload & View Modal -->
-    <div id="pdfModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative">
-            <!-- Close Button -->
-            <button onclick="closePdfModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
 
-            <div class="flex items-center space-x-3 mb-4">
-                <span class="text-2xl text-rose-500"><i class="fa-solid fa-file-pdf"></i></span>
-                <h3 class="text-xl font-bold text-white">Important Question Practice PDFs</h3>
-            </div>
 
-            <p class="text-slate-400 text-sm mb-6">Select or download test practice papers for your upcoming exams.</p>
+<p>📚 Expert in IIT-JEE, TIFR, ISI, NBHM,CMI, IIT-JAM, CSIR-NET</p>
 
-            <!-- PDF Links Grid -->
-            <div class="space-y-4">
-                <!-- Class 11 PDFs -->
-                <div class="bg-slate-800/70 rounded-xl p-4 border border-slate-700">
-                    <h4 class="font-bold text-emerald-400 mb-2 text-sm flex items-center">
-                        <i class="fa-solid fa-graduation-cap mr-2"></i> Class 11 Practice Sets
-                    </h4>
-                    <div class="space-y-2">
-                        <a href="#" onclick="mockDownload('Class_11_Algebra_Imp_Qs.pdf')" class="flex items-center justify-between p-2.5 bg-slate-900/60 hover:bg-slate-900 rounded-lg text-xs md:text-sm text-slate-200 transition">
-                            <span>📄 Class XI - Calculus & Algebra Top Questions.pdf</span>
-                            <span class="text-indigo-400 font-semibold text-xs"><i class="fa-solid fa-download mr-1"></i> Download</span>
-                        </a>
-                        <a href="#" onclick="mockDownload('Class_11_Mock_Test_2026.pdf')" class="flex items-center justify-between p-2.5 bg-slate-900/60 hover:bg-slate-900 rounded-lg text-xs md:text-sm text-slate-200 transition">
-                            <span>📄 Class XI - Upcoming Exam Mock Test Paper.pdf</span>
-                            <span class="text-indigo-400 font-semibold text-xs"><i class="fa-solid fa-download mr-1"></i> Download</span>
-                        </a>
-                    </div>
-                </div>
 
-                <!-- Class 12 PDFs -->
-                <div class="bg-slate-800/70 rounded-xl p-4 border border-slate-700">
-                    <h4 class="font-bold text-rose-400 mb-2 text-sm flex items-center">
-                        <i class="fa-solid fa-graduation-cap mr-2"></i> Class 12 Practice Sets
-                    </h4>
-                    <div class="space-y-2">
-                        <a href="#" onclick="mockDownload('Class_12_Integration_Board_Special.pdf')" class="flex items-center justify-between p-2.5 bg-slate-900/60 hover:bg-slate-900 rounded-lg text-xs md:text-sm text-slate-200 transition">
-                            <span>📄 Class XII - Integration & Differential Equations.pdf</span>
-                            <span class="text-rose-400 font-semibold text-xs"><i class="fa-solid fa-download mr-1"></i> Download</span>
-                        </a>
-                        <a href="#" onclick="mockDownload('Class_12_Full_Syllabus_Test.pdf')" class="flex items-center justify-between p-2.5 bg-slate-900/60 hover:bg-slate-900 rounded-lg text-xs md:text-sm text-slate-200 transition">
-                            <span>📄 Class XII - Board Level Expected Questions 2026.pdf</span>
-                            <span class="text-rose-400 font-semibold text-xs"><i class="fa-solid fa-download mr-1"></i> Download</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Footer button -->
-            <div class="mt-6 flex justify-end">
-                <button onclick="closePdfModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-5 py-2 rounded-xl text-sm">
-                    Close
-                </button>
-            </div>
-        </div>
-    </div>
+<p>💡 Calculus • Abstract Algebra • Complex Analysis • Linear Algebra • Real Analysis</p>
 
-    <!-- Notification Toast -->
-    <div id="toast" class="fixed bottom-5 right-5 bg-emerald-600 text-white px-4 py-3 rounded-xl shadow-xl hidden z-50 text-sm font-medium flex items-center space-x-2">
-        <i class="fa-solid fa-circle-check"></i>
-        <span id="toast-msg">File downloading started...</span>
-    </div>
 
-    <!-- Footer -->
-    <footer id="contact" class="bg-slate-950 border-t border-slate-800 text-center py-8 text-slate-500 text-xs">
-        <p>© 2026 Ravi Shankar Mathematics. All Rights Reserved.</p>
-        <p class="mt-1">IIT Bhubaneswar Alumnus • Advanced Mathematics Institute</p>
-    </footer>
 
-    <!-- JavaScript Logic -->
-    <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+</div>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
 
-        // PDF Modal Functions
-        function openPdfModal() {
-            document.getElementById('pdfModal').classList.remove('hidden');
-        }
 
-        function closePdfModal() {
-            document.getElementById('pdfModal').classList.add('hidden');
-        }
 
-        // Mock Download Notification
-        function mockDownload(filename) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-msg');
-            toastMsg.innerText = `Downloading ${filename}...`;
-            toast.classList.remove('hidden');
 
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
-        }
-    </script>
+<!-- ---------- SHAYARI ---------- -->
+
+
+
+<div class="shayari">
+
+
+
+    <p>
+
+हमने सवालों से ही अपने सफ़र की राह माँगी है,<br>
+
+जहाँ दुनिया रुक गई, हमने वहीं से गणित बाँधी है।
+
+        
+
+    </p>
+
+
+
+    <span>— RAVI SHANKAR</span>
+
+
+
+</div>
+
+
+
+
+
+<p class="tagline"> 
+
+Learn Mathematics in the easiest way. 
+
+</p> 
+
+
+
+<button>Start Learning</button>
+
+
+
+
+
+</div>
+
+
+
+<section class="classes">
+
+
+
+<h2>Choose Your Class</h2>
+
+
+
+<div class="card-container">
+
+
+
+<div class="card">
+
+    <h3>📘 Class 9</h3>
+
+    <p>NCERT (Ganita Manjari) End of Chapter Solutions</p>
+
+
+
+    <a href="class9.html">
+
+        <button>Open</button>
+
+    </a>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📙 Advanced Course </h3>
+
+<p>For Better Future (AI and SI)</p>
+
+    <a href="Course1.html">
+
+<button>Open</button>
+
+</div>
+
+
+
+<div class="class-card">
+
+
+
+    <h2>📗 Class 11</h2>
+
+
+
+    <p>
+
+        IIT JEE Level, Algebra,<br>
+
+        Trigonometry, Calculus
+
+    </p>
+
+
+
+    <a href="./Class%2011.html">
+
+        <button>Open</button>
+
+    </a>
+
+
+
+</div>
+
+
+
+<div class="card">
+
+<h3>📕 Class 12</h3>
+
+<p>Complete CBSE Mathematics with Solutions</p>
+
+
+
+<a href="class12.html">
+
+<button>Open</button>
+
+</a>
+
+
+
+</div>
+
+<div class="card">
+
+<h3>📕 JEE Advanced (PRO Version)</h3>
+
+<p>Special Pure Mathematics</p>
+
+
+
+<a href="JEE.html">
+
+<button>Open</button>
+
+</a>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
 </body>
+
 </html>
+
